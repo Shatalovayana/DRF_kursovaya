@@ -1,0 +1,34 @@
+[
+{
+  "model": "habits.habit",
+  "pk": 1,
+  "fields": {
+    "user": 7,
+    "place": "дом",
+    "time": "2024-03-10T15:20:12Z",
+    "action": "читать книгу",
+    "sign_of_a_pleasant_habit": true,
+    "connected_habit": null,
+    "period": 2,
+    "reward": "посмотреть сериал",
+    "time_to_complete": 60,
+    "is_published": true
+  }
+},
+{
+  "model": "habits.habit",
+  "pk": 2,
+  "fields": {
+    "user": 5,
+    "place": "тренажерный зал",
+    "time": "2024-03-10T10:00:00Z",
+    "action": "тренировка",
+    "sign_of_a_pleasant_habit": true,
+    "connected_habit": null,
+    "period": 3,
+    "reward": "съесть шоколадку",
+    "time_to_complete": 120,
+    "is_published": true
+  }
+}
+]
