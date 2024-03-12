@@ -17,24 +17,24 @@ class HabitAPITestCase(APITestCase):
         self.habit = Habit.objects.create(
             user=self.user,
             place='дом',
-            time='2024-03-12 10:00:00',
+            time='10:00:00',
             action='делать зарядку',
             period=1,
             reward='кофе',
-            time_to_complete='10',
+            time_to_complete='2',
             is_published=True,
             )
 
     def test_get_habit_create(self):
         """Тестирование создания привычки."""
         data = {
+            'user': self.user,
             'place': 'дом',
-            'time': '2024-03-12 12:00:00',
+            'time': '12:00:00',
             'action': 'делать растяжку',
             'period': 1,
             'reward': 'сон',
-            'time_to_complete': '15',
-            'is_published': True
+            'time_to_complete': 2
         }
 
         response = self.client.post(
@@ -68,10 +68,11 @@ class HabitAPITestCase(APITestCase):
     def test_get_habit_update(self):
         """Тестирование редактирования привычки."""
         data = {
-            'time': '11:00',
+            'time': '11:00:00',
             'action': 'делать растяжку',
             'reward': 'сок',
-            'time_to_complete': '00:10',
+            'period': 2,
+            'time_to_complete': 1,
         }
 
         response = self.client.patch(
