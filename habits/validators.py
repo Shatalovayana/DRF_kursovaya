@@ -57,7 +57,7 @@ class TimeToCompleteValidator:
     def __call__(self, value):
         time = value.get(self.time_to_complete)
 
-        if time > datetime.time(minute=2):
+        if time > 2:
             raise ValidationError(
                 'Время выполнения должно быть не больше 120 секунд!'
                 )

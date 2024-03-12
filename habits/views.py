@@ -21,7 +21,7 @@ class HabitCreateAPIView(generics.CreateAPIView):
 
 
 class HabitListAPIView(generics.ListAPIView):
-    """Контроллер просмотра списка привычек"""
+    """Контроллер просмотра списка привычек конкретного пользователя"""
     serializer_class = HabitSerializer
     queryset = Habit.objects.all()
     permission_classes = [IsAuthenticated]
@@ -29,7 +29,20 @@ class HabitListAPIView(generics.ListAPIView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
-        queryset = queryset.filter(Q(is_published=True) | Q(user=self.request.user))
+        queryset = queryset.filter(user=self.request.user)
+        return queryset
+
+
+class HabitPublicListAPIView(generics.ListAPIView):
+    """Контроллер просмотра списка публичных привычек"""
+    serializer_class = HabitSerializer
+    queryset = Habit.objects.all()
+    permission_classes = [IsAuthenticated]
+    pagination_class = HabitPaginator
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(is_published=True)
         return queryset
 
 

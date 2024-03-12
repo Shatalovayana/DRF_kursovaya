@@ -1,4 +1,3 @@
-import os
 import requests
 
 from config.settings import TG_API_KEY
