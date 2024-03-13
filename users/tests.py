@@ -19,7 +19,7 @@ class UserAPITestCase(TestCase):
             'tg_id': '1234'
         }
         response = self.client.post(
-            reverse('users:users',
-                    data=data))
+            '/users/users/',
+            data=data)
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
