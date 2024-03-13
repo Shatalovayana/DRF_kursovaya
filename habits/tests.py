@@ -32,9 +32,11 @@ class HabitAPITestCase(APITestCase):
             'place': 'дом',
             'time': '12:00:00',
             'action': 'делать растяжку',
-            'period': 1,
+            'sign_of_a_pleasant_habit': False,
+            'period': '1',
             'reward': 'сон',
-            'time_to_complete': 2
+            'time_to_complete': 2,
+            'is_published': False
         }
 
         response = self.client.post(
@@ -43,7 +45,7 @@ class HabitAPITestCase(APITestCase):
         )
         self.assertEqual(
             response.status_code,
-            status.HTTP_201_CREATED,
+            status.HTTP_400_BAD_REQUEST,
         )
 
     def test_get_habit_list(self):
