@@ -7,8 +7,12 @@ services:
       - '6379:6379'
   db:
     image: postgres
+    env_file:
+      - .env
     environment:
-      - POSTGRES_PASSWORD="${PASSWORD}"
+      - POSTGRES_PASSWORD=373479060
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=shelterdocker
       - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
       - '5432:5432'
@@ -33,7 +37,7 @@ services:
   celery:
     build: .
     tty: true
-    command: celery -A config worker -l INFO -P eventlet
+    command: celery -A config worker -l INFO
     depends_on:
     - redis
     - app
@@ -41,7 +45,7 @@ services:
   celery_beat:
     build: .
     tty: true
-    command: celery -A config beat -l INFO -P eventlet
+    command: celery -A config beat -l INFO
     depends_on:
       - redis
       - app
