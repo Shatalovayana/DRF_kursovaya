@@ -173,7 +173,7 @@ CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
 CELERY_BEAT_SCHEDULE = {
     'check_last_login': {
         'task': 'habits.tasks.task_send_msg_to_tg',  # Путь к задаче
-        'schedule': timedelta(days=1),  # Расписание выполнения задачи (например, каждые 10 минут)
+        'schedule': timedelta(days=1),
     },
 }
 
